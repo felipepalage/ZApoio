@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Histórico de Deploys</title>
+  <link rel="icon" type="image/png" href="img/ZApoio.png"/>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Poppins:wght@400;600&display=swap" rel="stylesheet"/>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #1a1a1a;
+      color: #ffffff;
+    }
+
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: #121212;
+      padding: 12px 40px;
+      border-bottom: 1px solid #00d187;
+      height: 100px;
+    }
+
+    .btn-voltar {
+      background: transparent;
+      color: #00d187;
+      font-family: 'Orbitron', sans-serif;
+      border: 2px solid #00d187;
+      padding: 10px 20px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+
+    .btn-voltar:hover {
+      background: #00d18722;
+      box-shadow: 0 0 8px #00d18788;
+      color: #00ffc2;
+    }
+
+    .hero {
+      margin-top: 60px;
+      padding: 60px 20px 30px;
+      background: linear-gradient(to right, #121212, #1f3f35);
+      text-align: center;
+    }
+
+    .hero h1 {
+      font-size: 2.8rem;
+      color: #00d187;
+      margin-bottom: 16px;
+      font-family: 'Orbitron', sans-serif;
+    }
+
+    .hero p {
+      font-size: 1.1rem;
+      color: #d9fbee;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .section {
+      padding: 60px 20px;
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    .section h2 {
+      font-size: 2.2rem;
+      color: #00d187;
+      text-align: center;
+      margin-bottom: 40px;
+      font-family: 'Orbitron', sans-serif;
+    }
+
+    .deploy-group {
+      background: #101c18;
+      border: 1px solid #00d18733;
+      border-radius: 12px;
+      margin-bottom: 20px;
+      overflow: hidden;
+    }
+
+    .deploy-header {
+      background: #00d18722;
+      padding: 16px 24px;
+      cursor: pointer;
+      font-weight: 600;
+      color: #00ffc2;
+      font-family: 'Orbitron', sans-serif;
+      transition: background 0.3s;
+    }
+
+    .deploy-header:hover {
+      background: #00d18733;
+    }
+
+    .deploy-items {
+      display: none;
+      padding: 16px 24px;
+      background: #f0fdf9;
+      color: #003d28;
+    }
+
+    .deploy-item {
+      margin-bottom: 12px;
+    }
+
+    .tag {
+      font-size: 0.85rem;
+      padding: 4px 10px;
+      border-radius: 6px;
+      font-weight: bold;
+      display: inline-block;
+      margin-bottom: 6px;
+    }
+
+    .tag-feat {
+      background: #00cc66;
+      color: #fff;
+    }
+
+    .tag-fix {
+      background: #ff8c00;
+      color: #fff;
+    }
+
+    footer {
+      background: #121212;
+      color: #aaaaaa;
+      text-align: center;
+      padding: 30px 20px;
+      font-size: 0.9rem;
+      border-top: 1px solid #00d18722;
+    }
+
+    footer a {
+      color: #00d187;
+      text-decoration: none;
+      margin: 0 6px;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div></div>
+    <a href="zApoio.html" class="btn-voltar">← Voltar</a>
+  </header>
+
+  <section class="hero">
+    <h1>Histórico de Deploys</h1>
+    <p>Clique em uma data para visualizar as funcionalidades e correções realizadas.</p>
+  </section>
+
+  <section class="section">
+    <h2>Ultimos Deploys</h2>
+
+    <div class="deploy-group">
+      <div class="deploy-header">📅 02/06/2025</div>
+      <div class="deploy-items">
+        <div class="deploy-item">
+          <span class="tag tag-feat">✨ Feature</span> API de Baixa CNAB homologada com logs automáticos
+        </div>
+        <div class="deploy-item">
+          <span class="tag tag-fix">🔧 Blocker</span> Correção no retorno de status de lote parcial
+        </div>
+      </div>
+    </div>
+
+    <div class="deploy-group">
+      <div class="deploy-header">📅 28/05/2025</div>
+      <div class="deploy-items">
+        <div class="deploy-item">
+          <span class="tag tag-fix">🔧 Blocker</span> Ajuste no parser de relatórios com campos obrigatórios
+        </div>
+      </div>
+    </div>
+
+    <div class="deploy-group">
+      <div class="deploy-header">📅 20/05/2025</div>
+      <div class="deploy-items">
+        <div class="deploy-item">
+          <span class="tag tag-feat">✨ Feature</span> Módulo de acompanhamento de títulos com alertas visuais
+        </div>
+      </div>
+    </div>
+
+    <div class="deploy-group">
+      <div class="deploy-header">📅 10/05/2025</div>
+      <div class="deploy-items">
+        <div class="deploy-item">
+          <span class="tag tag-feat">✨ Feature</span> Integração com assinatura eletrônica ZiSign
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Zitec. Todos os direitos reservados.</p>
+    <p><a href="#">Termos de uso</a> | <a href="#">Contato</a></p>
+  </footer>
+
+  <script>
+    document.querySelectorAll('.deploy-header').forEach(header => {
+      header.addEventListener('click', () => {
+        const content = header.nextElementSibling;
+        content.style.display = content.style.display === 'block' ? 'none' : 'block';
+      });
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,837 @@
+﻿<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Zapoio - Plataforma de Apoio da Zitec</title>
+  <link rel="icon" type="image/png" href="img/ZApoio.png"/>
+
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+  <style>
+ * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Orbitron', sans-serif;
+  background: #1a1a1a; 
+  color: #1a1a1a;
+  line-height: 1.6;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&display=swap');
+
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #121212;
+  padding: 12px 40px;
+  border-bottom: 1px solid #00d187;
+  box-shadow: 0 4px 12px rgba(0, 209, 135, 0.1);
+  height: 150px;
+  min-height: 80px;
+  overflow: hidden;
+}
+#logo-topo img {
+  max-height: 200px;       
+  height: auto;            
+  object-fit: contain;
+  display: block;
+  transition: transform 0.2s ease, filter 0.3s ease;
+}
+
+
+#logo-topo img:hover {
+  filter: brightness(1.3);
+  transform: scale(1.02);
+}
+
+
+nav a {
+  margin-left: 25px;
+  text-decoration: none;
+  font-weight: 600;
+  color: #00d187;
+  font-family: 'Orbitron', sans-serif;
+  transition: all 0.3s ease;
+  padding: 10px 18px;
+  border: 2px solid transparent;
+  border-radius: 8px;
+}
+
+nav a:hover {
+  background: #00d18722;
+  border-color: #00d187;
+  color: #00ffc2;
+  box-shadow: 0 0 8px #00d18755;
+}
+
+
+.hero {
+  margin-top: 100px;
+  padding: 100px 20px 60px;
+  background: linear-gradient(to right, #121212, #1f3f35);
+  color: #d9fbee;
+  text-align: center;
+}
+
+.hero h1 {
+  font-size: 2.8rem;
+  margin-bottom: 20px;
+  color: #00d187;
+}
+
+.hero p {
+  max-width: 720px;
+  margin: 0 auto;
+  font-size: 1.1rem;
+}
+
+.section {
+  padding: 80px 20px;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.section h2 {
+  font-size: 2.2rem;
+  text-align: center;
+  color: #00d187;
+  margin-bottom: 50px;
+}
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+}
+
+.card {
+  background: #f0fdf9; /* Card claro */
+  border: 1px solid #e0e0e0;
+  border-radius: 12px;
+  padding: 25px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  transition: 0.3s ease-in-out;
+  text-align: center;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  border-color: #00d18733;
+}
+
+.card img {
+  max-width: 100%;
+  height: 160px;
+  object-fit: contain;
+  margin-bottom: 15px;
+  border-radius: 8px;
+}
+
+.card h3 {
+  color: #00d187;
+  margin-bottom: 10px;
+  font-size: 1.2rem;
+}
+
+.card a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.btn {
+  background: #00d187;
+  color: #ffffff;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-weight: 600;
+  text-decoration: none;
+  display: inline-block;
+  margin-top: 15px;
+  transition: 0.3s;
+}
+
+.btn:hover {
+  background: #00b97a;
+}
+#zacademy .card img {
+  max-height: 240px;
+}
+
+iframe {
+  width: 100%;
+  height: 200px;
+  border-radius: 12px;
+  border: none;
+}
+
+footer {
+  background: #121212;
+  color: #aaaaaa;
+  text-align: center;
+  padding: 40px 20px;
+  font-size: 0.9rem;
+  border-top: 1px solid #00d18722;
+}
+
+footer a {
+  color: #00d187;
+  text-decoration: none;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
+.timeline {
+  position: relative;
+  margin: 60px auto;
+  padding: 20px 0;
+  width: 100%;
+  max-width: 900px;
+}
+
+.timeline::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 0;
+  transform: translateX(-50%);
+  width: 4px;
+  height: 100%;
+  background: #00d187;
+}
+
+.timeline-item {
+  position: relative;
+  width: 50%;
+  padding: 20px 40px;
+  box-sizing: border-box;
+}
+
+.timeline-item:nth-child(odd) {
+  left: 0;
+  text-align: right;
+}
+
+.timeline-item:nth-child(even) {
+  left: 50%;
+  text-align: left;
+}
+
+.timeline-item::before {
+  content: "";
+  position: absolute;
+  top: 24px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #00d187;
+  border: 3px solid #fff;
+  z-index: 1;
+}
+
+.timeline-item:nth-child(odd)::before {
+  right: -10px;
+}
+
+.timeline-item:nth-child(even)::before {
+  left: -10px;
+}
+
+.timeline-content {
+  background: #f0fdf9;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  position: relative;
+}
+
+.timeline-content h3 {
+  margin-top: 0;
+  color: #004027;
+}
+
+.timeline-content p {
+  color: #003d28;
+  margin-bottom: 0;
+}
+
+@media (max-width: 768px) {
+  .timeline::before {
+    left: 20px;
+  }
+
+  .timeline-item,
+  .timeline-item:nth-child(even),
+  .timeline-item:nth-child(odd) {
+    width: 100%;
+    left: 0 !important;
+    text-align: left;
+    padding-left: 60px;
+  }
+
+  .timeline-item::before {
+    left: 20px !important;
+  }
+}
+
+#abrir-chatbot {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #00d187;
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  font-size: 1.5rem;
+  cursor: pointer;
+  box-shadow: 0 0 12px #00ffc280;
+  z-index: 9998;
+  transition: transform 0.2s ease;
+}
+
+#abrir-chatbot:hover {
+  transform: scale(1.1);
+}
+
+#chatbot-modal {
+  position: fixed;
+  bottom: 100px;
+  right: 20px;
+  width: 360px;
+  max-height: 500px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+  z-index: 9998;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transform: translateY(100%);
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.4s ease;
+}
+
+#chatbot-modal.open {
+  transform: translateY(0%);
+  opacity: 1;
+  pointer-events: auto;
+}
+
+#chatbot-modal.open {
+  right: 0;
+}
+
+.chatbot-header {
+  background: #00d187;
+  padding: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: bold;
+  border-bottom: 1px solid #00d18733;
+}
+
+.chatbot-header button {
+  background: transparent;
+  border: none;
+  color: #fff;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+.chatbot-content {
+  padding: 20px;
+  overflow-y: auto;
+  flex: 1;
+}
+
+.chatbot-content h3 {
+  margin-bottom: 16px;
+  color: #00ffc2;
+  font-family: 'Orbitron', sans-serif;
+}
+
+.faq-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.faq-buttons button {
+  background: #1a1a1a;
+  border: 1px solid #00d18744;
+  padding: 12px;
+  border-radius: 8px;
+  color: #00ffc2;
+  font-size: 0.95rem;
+  text-align: left;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.faq-buttons button:hover {
+  background: #00d18722;
+}
+
+#faq-resposta {
+  background: #f0fdf9;
+  color: #004027;
+  padding: 16px;
+  border-radius: 8px;
+  margin-top: 20px;
+  box-shadow: 0 4px 10px rgba(0, 255, 194, 0.15);
+  font-size: 0.95rem;
+}
+
+
+@media (max-width: 768px) {
+  header {
+    flex-direction: column;
+    padding: 20px;
+  }
+
+  nav a {
+    margin: 10px;
+  }
+
+  .hero h1 {
+    font-size: 2rem;
+  }
+}
+#modal-resposta {
+  position: fixed;
+  z-index: 10000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-conteudo {
+  background: #f0fdf9;
+  color: #003d28;
+  padding: 30px;
+  border-radius: 12px;
+  max-width: 500px;
+  width: 90%;
+  box-shadow: 0 0 20px rgba(0, 255, 194, 0.3);
+  position: relative;
+  font-size: 1rem;
+}
+
+.fechar-modal {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 1.3rem;
+  cursor: pointer;
+  color: #004027;
+}
+
+#zapoio .card img {
+  max-width: 180px;
+  margin: 0 auto 16px;
+  display: block;
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+#zapoio .card img:hover {
+  transform: scale(1.08);
+  filter: brightness(1.2);
+  cursor: pointer;
+}
+
+#logo-topo img {
+  transition: transform 0.2s ease;
+}
+
+#logo-topo img:active {
+  transform: scale(0.94);
+}
+.ranking-section, .community-section {
+      background: #101010;
+      color: #e0f8f1;
+      padding: 80px 20px;
+    }
+
+    .ranking-section h2, .community-section h2 {
+      font-size: 2.2rem;
+      text-align: center;
+      color: #00d187;
+      margin-bottom: 50px;
+    }
+
+    .ranking-table {
+      width: 100%;
+      max-width: 800px;
+      margin: 0 auto 60px;
+      border-collapse: collapse;
+      background: #1c1c1c;
+      border: 1px solid #00d18744;
+    }
+
+    .ranking-table th, .ranking-table td {
+      padding: 15px;
+      text-align: center;
+      border-bottom: 1px solid #00d18722;
+    }
+
+    .ranking-table th {
+      background: #00d18733;
+      color: #00ffc2;
+      font-weight: 600;
+    }
+
+    .ranking-table tr:hover {
+      background: #222;
+    }
+
+    .highlight {
+      background: #003d28;
+      color: #ffffff;
+    }
+
+    .community-highlights {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .community-highlights .card {
+      background: #161f1c;
+      border: 1px solid #00d18722;
+      color: #cceee2;
+    }
+#abrir-chatbot img {
+  object-fit: cover;
+  padding: 6px;
+  transition: transform 0.2s ease;
+}
+
+#abrir-chatbot:hover img {
+  transform: scale(1.1);
+}
+
+    
+  </style>
+</head>
+<body>
+<header>
+  <a href="#" id="logo-topo">
+    <img src="img/ZApoio.png" alt="Logo Zapoio" />
+  </a>
+  <nav>
+    <a href="#projetos">Projetos</a>
+    <a href="#linha-do-tempo">Linha do Tempo</a>
+    <a href="#fidc">Regra de Negócio</a>
+    <a href="#zacademy">ZAcademy</a>
+    <a href="#materiais">Materiais de Apoio</a>
+    <a href="ZLogin.html" style="background: #00d187; color: white; padding: 10px 18px; border-radius: 8px; margin-left: 20px; font-weight: 600;">Sair</a>
+  </nav>
+</header>
+
+  
+
+  <section class="hero">
+    <h1>Desenvolva suas Habilidades</h1>
+    <p>O Zapoio é a plataforma de conhecimentos básicos interna da Zitec : conheça projetos reais, aprenda sobre regra de negócio e parte tecnica com conteúdo prático e direcionado.</p>
+  </section>
+
+  <section class="section" id="projetos">
+    <h2>Nossos Projetos</h2>
+    <div class="card-grid">
+      <div class="card">
+        <a href="https://portal.idsf.com.br/login.aspx" target="_blank">
+          <img src="img/portalidsf.jpg" alt="Portal IDSF" />
+          <h3>Portal IDSF</h3>
+        </a>
+        <p>Plataforma da ID Serviços Financeiros CTVM para saldos, extratos e relatórios de investimentos.</p>
+      </div>
+
+      <div class="card">
+        <a href="https://custodia.idsf.com.br/authentication/login" target="_blank">
+          <img src="img/Zcustodia.png" alt="Portal Custódia" />
+          <h3>Portal Custódia</h3>
+        </a>
+        <p>Gestão completa da custódia: operações, cadastros, movimentações e controle de fundos.</p>
+      </div>
+      
+
+      
+      <div class="card">
+        <a href="https://portal.zisign.ai/" target="_blank">
+          <img src="img/zisign.png" alt="ZiSign" />
+          <h3>ZiSign - Certificadora</h3>
+        </a>
+        <p>Assinatura eletrônica e certificação digital com segurança e integração aos sistemas da Zitec.</p>
+      </div>
+    </div>
+  </section>
+
+
+  <section class="section" id="linha-do-tempo">
+    <h2>Linha do Tempo Zitec</h2>
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-content">
+          <h3>2021 – Portal IDSF</h3>
+          <p>Lançamento da plataforma de saldos, extratos e relatórios de investimentos.</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-content">
+          <h3>2024 – ZCustódia</h3>
+          <p>Gestão de operações e fundos com sistema robusto de custódia.</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-content">
+          <h3>2025 – ZiSign</h3>
+          <p>Assinatura eletrônica integrada à infraestrutura da Zitec.</p>
+        </div>
+      </div>
+    
+    </div>
+  </section>
+
+  <section class="section" id="fidc">
+    <h2>Regra de negócio</h2>
+    <div class="card-grid">
+      <div class="card">
+        <h3>Introdução ao FIDC</h3>
+        <p>Conheça os fundamentos de Fundos de Investimento em Direitos Creditórios e como funcionam na prática.</p>
+      </div>
+  
+      <div class="card">
+        <h3>eBook Exclusivo</h3>
+        <p>
+          Baixe o material completo e aprofunde-se na estrutura, legislação e aplicações do FIDC:
+        </p>
+        <a href="img/EBook_zitec.pdf" target="_blank" style="display: inline-block; margin-top: 15px; background: #00cc66; color: #fff; padding: 10px 20px; border-radius: 8px; font-weight: 600; text-decoration: none;">
+          Visualizar eBook 
+        </a>
+      </div>
+  
+      <div class="card">
+        <h3>Fidc</h3>
+        <p>Aprofunde seus conhecimentos com os cursos gratuitos da Anbima:</p>
+        <ul style="list-style: none; padding: 0; margin-top: 10px;">
+          <li>
+            <a href="https://cursos.anbima.com.br/detalhes-item/61a0e06d271d2829b338c885/Iniciando%20com%20produtos%20e%20servi%C3%A7os" 
+               target="_blank" 
+               style="color: #006d2c; font-weight: 600; text-decoration: none;">
+              • FIDC - Fundos de Investimento em Direitos Creditórios
+            </a>
+          </li>
+          <li style="margin-top: 10px;">
+            <a href="https://cursos.anbima.com.br/detalhes-item/fundos-de-investimento" 
+               target="_blank" 
+               style="color: #006d2c; font-weight: 600; text-decoration: none;">
+              • Fundos de Investimento
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+
+  <section class="section" id="zacademy">
+    <h2>ZAcademy</h2>
+    <div class="card-grid">
+      <div class="card" style="padding: 30px 20px;">
+        <h3 style="color: #00d187; margin-bottom: 12px;">Conheça a ZAcademy</h3>
+        <p style="margin-bottom: 20px;">A ZAcademy reúne todos os cursos técnicos essenciais para devs da Zitec, com conteúdos sobre C#, SQL, Git, Angular e muito mais.</p>
+        <a href="zacademy.html" class="btn">Acessar ZAcademy</a>
+      </div>
+    </div>
+  </section>
+
+
+<section class="section" id="materiais">
+  <h2>Materiais de Apoio</h2>
+  <div class="card-grid">
+    <div class="card" style="padding: 30px 20px;">
+      <h3 style="color: #00d187; margin-bottom: 12px;">Utilitários e Documentações</h3>
+      <p style="margin-bottom: 20px;">
+        Acesse ferramentas úteis, links importantes para o dia a dia dos desenvolvedores da Zitec.
+      </p>
+      <a href="materiais.html" class="btn">Abrir Materiais</a>
+    </div>
+  </div>
+</section>
+
+
+  
+  <section class="ranking-section">
+    <h2>Ranking Mensal de Desenvolvedores</h2>
+    <table class="ranking-table">
+      <thead>
+        <tr>
+          <th>Posição</th>
+          <th>Nome</th>
+          <th>Pontos</th>
+          <th>Resultado</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="highlight">
+          <td>1º</td>
+          <td>Felipe Palage</td>
+          <td>280</td>
+          <td>⭐ Dev do Mês</td>
+        </tr>
+        <tr>
+          <td>2º</td>
+          <td>Felipe Palage</td>
+          <td>240</td>
+          <td>--</td>
+        </tr>
+        <tr>
+          <td>3º</td>
+          <td>Felipe Palage</td>
+          <td>215</td>
+          <td>--</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+
+  <section class="community-section">
+    <h2>Feedback</h2>
+    <div class="community-highlights">
+      <div class="card">
+        <h3>PR em Destaque</h3>
+        <p>Refatoramento completo da API de Baixa Lote com melhorias de performance e logs automatizados. <strong>@Felipe</strong></p>
+      </div>
+      <div class="card">
+        <h3>Ajuda em Sprint</h3>
+        <p><strong>@Felipe</strong> apoiou novos devs na configuração do ambiente e revisões de PRs.</p>
+      </div>
+      <div class="card">
+        <h3>Elogio no Slack</h3>
+        <p><em>"Mandou bem demais nesse deploy, Palage! Sem bug, tudo redondo. Parabéns!"</em></p>
+      </div>
+    </div>
+  </section>
+  
+  <footer>
+    <p>&copy; 2025 Zitec. Todos os direitos reservados.</p>
+    <p><a href="#">Termos de uso</a> | <a href="#">Contato</a></p>
+  </footer>
+
+
+ <script>
+  window.addEventListener("DOMContentLoaded", () => {
+    const abrirBtn = document.getElementById("abrir-chatbot");
+    const modal = document.getElementById("chatbot-modal");
+
+    abrirBtn.addEventListener("click", () => {
+      modal.classList.toggle("open");
+    });
+
+    document.getElementById("fechar-chatbot").addEventListener("click", () => {
+      modal.classList.remove("open");
+    });
+
+    window.responder = function(pergunta) {
+      const baseConhecimento = {
+        "o que é sacado": "Sacado é o devedor do título. É a pessoa ou empresa que deve pagar o valor do crédito ao fundo.",
+        "o que é lastro": "Lastro é o documento que comprova a origem do direito creditório, como nota fiscal, boleto ou contrato.",
+        "o que é fidc": "FIDC significa Fundo de Investimento em Direitos Creditórios. Ele adquire recebíveis de empresas e antecipa os valores aos cedentes.",
+        "o que é cedente": "Cedente é quem cede os direitos creditórios ao fundo. Geralmente é uma empresa que antecipa seus recebíveis para obter capital.",
+        "o que é fundo": "Fundo é a estrutura legal e financeira que adquire os recebíveis e gera lucro para os investidores através da sua carteira.",
+        "o que é representante": "Representante é a instituição responsável por administrar e executar as operações em nome do fundo.",
+        "o que é carteira": "Carteira é o conjunto de títulos de crédito adquiridos pelo FIDC, como duplicatas, contratos e boletos.",
+        "o que é cotista": "Cotista é o investidor do FIDC. Ele aplica recursos no fundo e recebe rendimento conforme o desempenho da carteira.",
+        "o que é custodiante": "Custodiante é a entidade responsável por garantir o controle, segurança e registro dos ativos do fundo.",
+        "o que é rating": "Rating é uma nota atribuída por uma agência classificadora que indica o risco de crédito da carteira do fundo.",
+        "o que é liquidação": "Liquidação ocorre quando o sacado paga o título e o valor é repassado ao fundo ou ao cotista.",
+        "o que é inadimplência": "Inadimplência é quando o sacado não paga o título no vencimento, afetando o fluxo de caixa e o retorno aos cotistas.",
+        "qual o papel da zitec": "A Zitec desenvolve e mantém os sistemas de gestão, custódia, automação de CNABs e controle operacional dos FIDCs.",
+        "como funciona o fidc": "O FIDC compra recebíveis, antecipa os valores ao cedente e recebe depois do sacado. O lucro é distribuído aos cotistas.",
+        "como validar um cnab": "Os CNABs enviados pelo portal passam por validações automáticas de estrutura, regras de negócio e duplicidade.",
+        "como é o fluxo da custódia": "A custódia valida, registra, acompanha pagamentos, liquidações e inadimplências dos títulos da carteira do fundo.",
+        "o que são cotas subordinadas": "Cotas subordinadas assumem maior risco e recebem rendimentos depois das cotas seniores. Compensam com maior potencial de retorno.",
+        "o que é patrimônio líquido do fundo": "É o valor total dos ativos do fundo menos os passivos. Representa o valor real sob gestão.",
+        "quem fiscaliza um fidc": "A CVM é a principal entidade reguladora dos FIDCs. O custodiante e auditorias também participam da governança.",
+        "o que é prazo médio da carteira": "É o tempo médio que os títulos da carteira demoram para serem liquidados. Impacta diretamente o fluxo de caixa do fundo.",
+        "o que é risco de concentração": "É o risco do fundo estar muito exposto a poucos sacados ou cedentes, o que pode aumentar o impacto em caso de inadimplência.",
+      };
+
+      const resposta = baseConhecimento[pergunta] || "Ainda não sei responder isso. 😕";
+      document.getElementById("conteudo-modal-resposta").innerHTML = resposta;
+      document.getElementById("modal-resposta").style.display = "flex";
+    };
+
+    window.fecharModal = function () {
+      document.getElementById("modal-resposta").style.display = "none";
+    };
+  });
+</script>
+
+
+<button id="abrir-chatbot" style="position: fixed; bottom: 20px; right: 20px; width: 64px; height: 64px; background: none; border: none; cursor: pointer; z-index: 9999;">
+  <img src="img/robozitec.png" alt="ZapoioBot" style="width: 100%; height: 100%; border-radius: 50%;" />
+</button>
+</body>
+
+
+<div id="chatbot-modal" style="display: none; position: fixed; bottom: 100px; right: 20px; width: 360px; max-height: 500px; background: white; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.2); z-index: 9998; overflow: hidden; display: flex; flex-direction: column;">
+  <div class="chatbot-header" style="background: #00d187; color: #fff; padding: 10px 16px; border-radius: 12px 12px 0 0; display: flex; align-items: center; justify-content: space-between;">
+    <span>
+      <img src="img/robozitec.png" alt="Bot Zitec" style="width: 24px; vertical-align: middle; margin-right: 8px;" />
+      ZapoioBot
+    </span>
+    <button id="fechar-chatbot" style="background: none; border: none; color: #fff; font-size: 1.2rem; cursor: pointer;">✖</button>
+  </div>
+<div class="chatbot-content" style="padding: 20px; background: #f0fdf9; overflow-y: auto; max-height: 400px;">
+    <h3 style="margin-bottom: 16px;">Dúvidas frequentes</h3>
+    <div class="faq-buttons" style="display: flex; flex-wrap: wrap; gap: 10px;">
+      <button onclick="responder('o que é sacado')">👤 O que é sacado?</button>
+      <button onclick="responder('o que é lastro')">📄 O que é lastro?</button>
+      <button onclick="responder('o que é fidc')">🏦 O que é FIDC?</button>
+      <button onclick="responder('o que é cedente')">💼 O que é Cedente?</button>
+      <button onclick="responder('o que é fundo')">📊 O que é Fundo?</button>
+      <button onclick="responder('o que é representante')">🧑‍⚖️ O que é Representante?</button>
+      <button onclick="responder('o que é carteira')">📁 O que é Carteira?</button>
+      <button onclick="responder('o que é cotista')">👥 O que é Cotista?</button>
+      <button onclick="responder('o que é custodiante')">🧩 O que é Custodiante?</button>
+      <button onclick="responder('o que é rating')">⭐ O que é Rating?</button>
+      <button onclick="responder('o que é liquidação')">💰 O que é Liquidação?</button>
+      <button onclick="responder('o que é inadimplência')">⚠️ O que é Inadimplência?</button>
+      <button onclick="responder('qual o papel da zitec')">💻 Qual o papel da Zitec?</button>
+      <button onclick="responder('como é o fluxo da custódia')">📈 Como é o fluxo da custódia?</button>
+<button onclick="responder('o que são cotas subordinadas')">🧱 O que são cotas subordinadas?</button>
+<button onclick="responder('o que é patrimônio líquido do fundo')">📉 O que é Patrimônio Líquido?</button>
+<button onclick="responder('quem fiscaliza um fidc')">🛡️ Quem fiscaliza um FIDC?</button>
+<button onclick="responder('o que é prazo médio da carteira')">⏳ O que é Prazo Médio?</button>
+<button onclick="responder('o que é risco de concentração')">🎯 O que é Risco de Concentração?</button>
+    </div>
+  </div>
+</div>
+
+<!-- Modal de resposta -->
+<div id="modal-resposta" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); justify-content: center; align-items: center; z-index: 99999;">
+  <div class="modal-conteudo" style="background: #f0fdf9; color: #003d28; padding: 30px; border-radius: 12px; max-width: 500px; width: 90%; box-shadow: 0 0 20px rgba(0, 255, 194, 0.3); position: relative;">
+    <span class="fechar-modal" onclick="fecharModal()" style="position: absolute; top: 10px; right: 15px; font-size: 1.3rem; cursor: pointer; color: #004027;">✖</span>
+    <div id="conteudo-modal-resposta"></div>
+  </div>
+</div>
+</div>
+</html>

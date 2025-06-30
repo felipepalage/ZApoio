@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ZAcademy - Zapoio</title>
+    <link rel="icon" type="image/png" href="img/ZApoio.png"/>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Poppins:wght@400;600&display=swap" rel="stylesheet"/>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Orbitron', sans-serif;
+      background: #1a1a1a;
+      color: #1a1a1a;
+      line-height: 1.6;
+    }
+
+    
+    @import url('https://cdn-uicons.flaticon.com/uicons-solid-rounded/css/uicons-solid-rounded.css');
+
+    header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #121212;
+  padding: 12px 40px;
+  border-bottom: 1px solid #00d187;
+  box-shadow: 0 4px 12px rgba(0, 209, 135, 0.1);
+  height: 150px;
+  min-height: 80px;
+  overflow: hidden;
+}
+#logo-topo img {
+  max-height: 200px;       
+  height: auto;            
+  object-fit: contain;
+  display: block;
+  transition: transform 0.2s ease, filter 0.3s ease;
+}
+
+
+#logo-topo img:hover {
+  filter: brightness(1.3);
+  transform: scale(1.02);
+}
+
+
+
+.btn-home {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: transparent;
+  color: #00d187;
+  font-family: 'Orbitron', sans-serif;
+  border: 2px solid #00d187;
+  padding: 10px 20px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.btn-home:hover {
+  background: #00d18722;
+  box-shadow: 0 0 8px #00d18788;
+  transform: translateY(-2px);
+  color: #00ffc2;
+}
+
+.btn-home i {
+  font-size: 1.2rem;
+}
+
+
+nav .home-icon {
+  font-size: 1.6rem;
+  color: #00d187;
+  text-decoration: none;
+  padding: 10px 15px;
+  border: 2px solid transparent;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+}
+
+nav .home-icon:hover {
+  border: 2px solid #00d187;
+  background: #00d18722;
+}
+
+
+    .hero {
+      margin-top: 100px;
+      padding: 100px 20px 60px;
+      background: linear-gradient(to right, #121212, #1f3f35);
+      color: #d9fbee;
+      text-align: center;
+    }
+
+    .hero h1 {
+      font-size: 2.8rem;
+      margin-bottom: 20px;
+      color: #00d187;
+    }
+
+    .hero p {
+      max-width: 720px;
+      margin: 0 auto;
+      font-size: 1.1rem;
+    }
+
+    .section {
+      padding: 80px 20px;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .section h2 {
+      font-size: 2.2rem;
+      text-align: center;
+      color: #00d187;
+      margin-bottom: 50px;
+    }
+
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+    }
+
+    .card {
+      background: #f0fdf9;
+      border: 1px solid #e0e0e0;
+      border-radius: 12px;
+      padding: 25px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+      transition: 0.3s ease-in-out;
+      text-align: center;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      border-color: #00d18733;
+    }
+
+    .card img {
+      max-width: 100%;
+      height: 160px;
+      object-fit: contain;
+      margin-bottom: 15px;
+      border-radius: 8px;
+    }
+
+    .card h3 {
+      color: #00d187;
+      margin-bottom: 10px;
+      font-size: 1.2rem;
+    }
+
+    footer {
+      background: #121212;
+      color: #aaaaaa;
+      text-align: center;
+      padding: 40px 20px;
+      font-size: 0.9rem;
+      border-top: 1px solid #00d18722;
+    }
+    .section-title {
+  font-size: 2.4rem;
+  color: #00d187;
+  margin-bottom: 40px;
+  position: relative;
+  text-align: center;
+}
+
+.section-title::after {
+  content: "";
+  width: 80px;
+  height: 3px;
+  background: #00d187;
+  display: block;
+  margin: 10px auto 0;
+  border-radius: 2px;
+}
+
+.card {
+  background: #fffafa;
+  border: 1px solid #00000022;
+  border-radius: 12px;
+  padding: 25px 20px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+  transition: all 0.3s ease-in-out;
+  text-align: center;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  border-color: #00ffc288;
+  box-shadow: 0 8px 20px rgba(0, 255, 200, 0.12);
+}
+
+.card img {
+  max-width: 100%;
+  height: 160px;
+  object-fit: contain;
+  margin-bottom: 20px;
+  border-radius: 8px;
+}
+
+.card h3 {
+  color: #000000;
+  font-size: 1.15rem;
+  font-weight: 600;
+  margin-top: 8px;
+}
+
+.btn-exercicios {
+  display: inline-block;
+  padding: 10px 20px;
+  background: #00d187;
+  color: #ffffff;
+  text-decoration: none;
+  border-radius: 8px;
+  font-weight: 600;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.btn-exercicios:hover {
+  background: #00b97a;
+  transform: translateY(-2px);
+}
+
+
+
+    @media (max-width: 768px) {
+      header {
+        flex-direction: column;
+        padding: 20px;
+      }
+
+      nav a {
+        margin: 10px;
+      }
+
+      .hero h1 {
+        font-size: 2rem;
+      }
+    }
+
+    header {
+  transition: box-shadow 0.3s ease, background 0.3s ease, border-bottom 0.3s ease;
+}
+
+header:hover {
+  box-shadow: 0 4px 12px rgba(0, 209, 135, 0.25);
+  background: #181818;
+  border-bottom: 1px solid #00ffc277;
+}
+
+#logo-topo img {
+  transition: transform 0.2s ease;
+  cursor: pointer;
+}
+
+#logo-topo img:active {
+  transform: scale(0.94);
+}
+  </style>
+</head>
+<body>
+    <header>
+        <a href="#" id="logo-topo">
+          <img src="img/ZAcademy.png" alt="Logo ZAcademy" />
+        </a>
+        <nav>
+          <a href="zApoio.html" class="btn-home" title="Voltar para o início">
+            <i class="fi fi-sr-home"></i>
+            ← Voltar
+          </a>
+        </nav>
+      </header>
+      
+      
+
+  <section class="hero">
+    <h1>Bem vindo a ZAcademy</h1>
+    <p>Cursos técnicos práticos para elevar sua jornada na Zitec com conteúdo direto ao ponto e aplicável no dia a dia.</p>
+  </section>
+
+  <section class="section">
+    <h2>Trilhas Técnicas</h2>
+    <div class="card-grid">
+      <div class="card">
+        <h3>GitKraken</h3>
+        <a href="https://www.youtube.com/watch?v=9Azp1aJMrRE" target="_blank">
+          <img src="img/gitkraken.png" alt="GitKraken" />
+        </a>
+      </div>
+
+      <div class="card">
+        <h3>Curso C# e .NET</h3>
+        <a href="https://www.youtube.com/watch?v=DA-DQsmPItU" target="_blank">
+          <img src="img/c.png" alt="C# e .NET" />
+        </a>
+      </div>
+
+      <div class="card">
+        <h3>Redmine na Prática</h3>
+        <a href="https://www.youtube.com/watch?v=654al31mVd4&list=PLE4SmuFsz8Gd0Y0HB4_3Pf47iDlzEyDnY" target="_blank">
+          <img src="img/redmine.png" alt="Redmine" />
+        </a>
+      </div>
+
+      <div class="card">
+        <h3>SQL Server</h3>
+        <a href="https://www.youtube.com/watch?v=OKqpZ6zbZwQ&list=PL7iAT8C5wumpQWB8AFW7CwK2nlzh8ZdP9" target="_blank">
+          <img src="img/sql.png" alt="SQL Server" />
+        </a>
+      </div>
+
+      <div class="card">
+        <h3>JavaScript para Iniciantes</h3>
+        <a href="https://www.youtube.com/embed/i6Oi-YtXnAU" target="_blank">
+          <img src="img/javascript.png" alt="JavaScript" />
+        </a>
+      </div>
+
+      <div class="card">
+        <h3>Angular – Guia Completo</h3>
+        <a href="https://www.youtube.com/watch?v=VumdXFJ4n7o&t=13s" target="_blank">
+          <img src="img/Angular.png" alt="Angular" />
+        </a>
+      </div>
+    </div>
+  </section>
+
+
+  <section class="section">
+    <h2>Biblioteca Zitec</h2>
+  
+    <div class="card-grid">
+      <div class="card">
+        <h3>Livros de C# e .NET</h3>
+        <a href="livros-csharp.html">
+          <img src="img/livrosccapa.png" alt="Livros de C#" />
+
+        </a>
+      </div>
+  
+      <div class="card">
+        <h3>Livros de Inglês</h3>
+        <a href="livros-ingles.html">
+          <img src="img/Livrosemingles.png" alt="Livros de Inglês" />
+        </a>
+      </div>
+
+      <div class="card">
+        <h3>Lógica</h3>
+        <a href="livros-logica.html">
+          <img src="img/logicalivro.png" alt="Livros de Inglês" />
+        </a>
+      </div>
+    </div>
+    </div>
+
+
+  
+  </section>
+
+  
+  <section class="section">
+    <h2>Exercícios Técnicos</h2>
+    <div class="card-grid">
+      <div class="card" style="padding: 30px 20px;">
+        <h3 style="color: #00d187; margin-bottom: 12px;">Desenvolva seu conhecimento</h3>
+        <p style="margin-bottom: 20px;">Acesse exercícios práticos de C#, SQL e JavaScript com timer e correção automática. Ideal para reforçar sua base técnica.</p>
+        <a href="exercicios.html" class="btn-exercicios">Acessar Exercícios</a>
+      </div>
+    </div>
+  </section>
+  
+  
+  
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const logo = document.getElementById("logo-topo");
+      if (logo) {
+        logo.addEventListener("click", (e) => {
+          e.preventDefault();
+          location.reload();
+        });
+      }
+    });
+  </script>
+  
+  <footer>
+    <p>&copy; 2025 Zitec. Todos os direitos reservados.</p>
+    <p><a href="#">Termos de uso</a> | <a href="#">Contato</a></p>
+  </footer>
+</body>
+</html>

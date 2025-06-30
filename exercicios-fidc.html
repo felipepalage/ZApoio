@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Exercícios FIDC - ZAcademy</title>
+  <link rel="icon" type="image/png" href="img/ZApoio.png"/>
+
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Poppins:wght@400;600&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --bg-dark: #1a1a1a;
+      --bg-medium: #1e1e1e;
+      --green: #00d187;
+      --green-light: #00ffc2;
+      --text-light: #f5f5f5;
+      --red: #ff7070;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: var(--bg-dark);
+      color: var(--text-light);
+      padding: 40px 20px;
+    }
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: #121212;
+      padding: 12px 40px;
+      border-bottom: 1px solid var(--green);
+      box-shadow: 0 4px 12px rgba(0, 209, 135, 0.1);
+      height: 150px;
+      min-height: 80px;
+    }
+    #logo-topo img {
+      max-height: 200px;
+      object-fit: contain;
+      transition: transform 0.2s ease, filter 0.3s ease;
+    }
+    #logo-topo img:hover {
+      filter: brightness(1.3);
+      transform: scale(1.02);
+    }
+    .btn-home {
+      border: 2px solid var(--green);
+      padding: 10px 20px;
+      border-radius: 8px;
+      color: var(--green);
+      background: transparent;
+      text-decoration: none;
+      font-family: 'Orbitron', sans-serif;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+    .btn-home:hover { background: var(--green-light); color: #000; }
+    h1 {
+      text-align: center;
+      color: var(--green);
+      margin: 40px 0 20px;
+      font-size: 2rem;
+    }
+    .pergunta {
+      background: var(--bg-medium);
+      border: 1px solid var(--green);
+      border-radius: 10px;
+      padding: 24px;
+      margin-bottom: 30px;
+      position: relative;
+    }
+    .pergunta h3 { color: var(--green-light); margin-bottom: 16px; }
+    .alternativa {
+      display: block;
+      padding: 12px 16px;
+      background: #2a2a2a;
+      border: 1px solid #00d18744;
+      border-radius: 8px;
+      margin: 8px 0;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .alternativa:hover {
+      background: #00d18722;
+      border-color: var(--green-light);
+    }
+    .alternativa input[type="radio"] {
+      margin-right: 12px;
+      transform: scale(1.2);
+    }
+    .timer {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      font-weight: bold;
+      color: var(--red);
+    }
+    .btn-finalizar {
+      display: block;
+      margin: 30px auto;
+      padding: 12px 30px;
+      background: var(--green);
+      color: #000;
+      font-weight: bold;
+      border: none;
+      border-radius: 8px;
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+    .btn-finalizar:hover { background: var(--green-light); }
+    .resultado {
+      text-align: center;
+      font-size: 1.4rem;
+      margin-top: 30px;
+    }
+    .barra-progresso {
+      width: 100%;
+      height: 8px;
+      background: #333;
+      border-radius: 10px;
+      overflow: hidden;
+      margin-top: 10px;
+    }
+    .progresso {
+      height: 100%;
+      background: var(--green);
+      width: 0%;
+      transition: width 0.3s ease;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <a href="ZAcademy.html" id="logo-topo">
+      <img src="img/ZAcademy.png" alt="Logo ZAcademy" />
+    </a>
+    <a href="ZAcademy.html" class="btn-home">← Voltar</a>
+  </header>
+
+  <h1>Exercícios sobre FIDC</h1>
+  <div class="barra-progresso"><div id="progresso" class="progresso"></div></div>
+  <div id="exercicios"></div>
+  <button class="btn-finalizar" onclick="finalizar()">Próxima</button>
+  <div id="resultado" class="resultado"></div>
+
+  <script>
+    const perguntas = [
+      {
+        pergunta: "Qual é o papel do Cedente em um FIDC?",
+        alternativas: [
+          "Adquirir os direitos creditórios do fundo",
+          "Fornecer os direitos creditórios ao fundo",
+          "Administrar os ativos do fundo",
+          "Auditar as demonstrações contábeis"
+        ],
+        correta: "Fornecer os direitos creditórios ao fundo"
+      },
+      {
+        pergunta: "O que caracteriza um lastro elegível em um FIDC?",
+        alternativas: [
+          "Possuir alta rentabilidade histórica",
+          "Estar inadimplente por mais de 90 dias",
+          "Estar dentro dos critérios de elegibilidade do regulamento",
+          "Ser originado fora do Brasil"
+        ],
+        correta: "Estar dentro dos critérios de elegibilidade do regulamento"
+      },
+      {
+        pergunta: "Qual órgão regula os FIDC no Brasil?",
+        alternativas: [
+          "Banco Central",
+          "ANBIMA",
+          "CVM",
+          "BACEN e CVM em conjunto"
+        ],
+        correta: "CVM"
+      },
+      {
+        pergunta: "Qual é a função do custodiante em um FIDC?",
+        alternativas: [
+          "Distribuir cotas ao mercado",
+          "Receber os pagamentos dos sacados e manter os ativos sob guarda",
+          "Emitir laudos de crédito",
+          "Elaborar o regulamento do fundo"
+        ],
+        correta: "Receber os pagamentos dos sacados e manter os ativos sob guarda"
+      },
+      {
+        pergunta: "O que representa a Cota Subordinada em um FIDC?",
+        alternativas: [
+          "Cota com prioridade no recebimento dos proventos",
+          "Cota com menor risco de crédito",
+          "Cota que absorve as primeiras perdas",
+          "Cota isenta de risco operacional"
+        ],
+        correta: "Cota que absorve as primeiras perdas"
+      },
+      {
+        pergunta: "Como é definida a precificação dos direitos creditórios no FIDC?",
+        alternativas: [
+          "Pelo auditor independente",
+          "Pelo cedente com base em valor contábil",
+          "Com base na metodologia definida pelo regulamento do fundo",
+          "Sempre pelo administrador do fundo"
+        ],
+        correta: "Com base na metodologia definida pelo regulamento do fundo"
+      },
+      {
+        pergunta: "O que é um fundo 'fechado' no contexto dos FIDCs?",
+        alternativas: [
+          "Fundo que não aceita mais cotistas",
+          "Fundo que não permite resgates antes do vencimento",
+          "Fundo que investe apenas em ativos internacionais",
+          "Fundo com capital garantido"
+        ],
+        correta: "Fundo que não permite resgates antes do vencimento"
+      },
+      {
+        pergunta: "Qual documento define as regras de funcionamento de um FIDC?",
+        alternativas: [
+          "Laudo de avaliação",
+          "Contrato de cessão",
+          "Regulamento do fundo",
+          "Manual do cotista"
+        ],
+        correta: "Regulamento do fundo"
+      },
+      {
+        pergunta: "Quais são os principais riscos envolvidos em um FIDC?",
+        alternativas: [
+          "Somente risco cambial",
+          "Apenas risco político",
+          "Risco de crédito, risco operacional e risco de liquidez",
+          "Nenhum risco, pois são fundos protegidos"
+        ],
+        correta: "Risco de crédito, risco operacional e risco de liquidez"
+      },
+      {
+        pergunta: "Como são classificadas as cotas em um FIDC tradicional?",
+        alternativas: [
+          "Classe Ouro e Classe Prata",
+          "Sênior e Subordinada",
+          "Master e Junior",
+          "Preferencial e Ordinária"
+        ],
+        correta: "Sênior e Subordinada"
+      }
+    ];
+
+    const container = document.getElementById("exercicios");
+    const resultadoDiv = document.getElementById("resultado");
+    const progressoBar = document.getElementById("progresso");
+    const btnFinalizar = document.querySelector(".btn-finalizar");
+
+    let indexAtual = 0;
+    let respostas = [];
+    let tempo = 20;
+    let timerInterval;
+
+    function carregarPergunta() {
+      clearInterval(timerInterval);
+      tempo = 20;
+      container.innerHTML = "";
+
+      const q = perguntas[indexAtual];
+      const div = document.createElement("div");
+      div.className = "pergunta";
+
+      div.innerHTML = `
+        <h3>${indexAtual + 1}. ${q.pergunta}</h3>
+        <div class="timer" id="timer">⏱️ ${tempo}s</div>
+      `;
+
+      q.alternativas.forEach(alt => {
+        const label = document.createElement("label");
+        label.className = "alternativa";
+        label.innerHTML = `
+          <input type="radio" name="resposta" value="${alt}">${alt}
+        `;
+        div.appendChild(label);
+      });
+
+      container.appendChild(div);
+      atualizarProgresso();
+
+      timerInterval = setInterval(() => {
+        tempo--;
+        document.getElementById("timer").textContent = `⏱️ ${tempo}s`;
+        if (tempo <= 0) {
+          clearInterval(timerInterval);
+          salvarResposta();
+          proximaPergunta();
+        }
+      }, 1000);
+    }
+
+    function salvarResposta() {
+      const selected = document.querySelector('input[name="resposta"]:checked');
+      respostas.push(selected ? selected.value : null);
+    }
+
+    function proximaPergunta() {
+      clearInterval(timerInterval);
+      indexAtual++;
+      if (indexAtual < perguntas.length) {
+        carregarPergunta();
+      } else {
+        mostrarResultado();
+      }
+    }
+
+    function atualizarProgresso() {
+      const progresso = ((indexAtual) / perguntas.length) * 100;
+      progressoBar.style.width = `${progresso}%`;
+    }
+
+    function mostrarResultado() {
+      container.innerHTML = "";
+      btnFinalizar.style.display = "none";
+
+      let acertos = respostas.filter((resposta, i) => resposta === perguntas[i].correta).length;
+      resultadoDiv.innerHTML = `
+        <p>✅ Você acertou <strong>${acertos}</strong> de <strong>${perguntas.length}</strong>.</p>
+        <p>${acertos >= 7 ? "Parabéns, você foi aprovado!" : "Tente novamente para reforçar o conteúdo."}</p>
+      `;
+    }
+
+    function finalizar() {
+      salvarResposta();
+      proximaPergunta();
+    }
+
+    carregarPergunta();
+  </script>
+</body>
+</html>

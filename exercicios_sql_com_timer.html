@@ -1,0 +1,378 @@
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Exercícios SQL Server - ZAcademy</title>
+  <link rel="icon" type="image/png" href="img/ZApoio.png"/>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Poppins:wght@400;600&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --bg-dark: #0f0f0f;
+      --bg-medium: #1a1a1a;
+      --green: #00d187;
+      --green-light: #00ffc2;
+      --text-light: #e5fef5;
+      --red: #ff7070;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: var(--bg-dark);
+      color: var(--text-light);
+      padding: 40px 20px;
+    }
+
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: #121212;
+      padding: 12px 40px;
+      border-bottom: 1px solid var(--green);
+      box-shadow: 0 4px 12px rgba(0, 209, 135, 0.1);
+      height: 140px;
+    }
+
+    #logo-topo img {
+      max-height: 160px;
+      height: auto;
+      object-fit: contain;
+      transition: transform 0.2s ease, filter 0.3s ease;
+    }
+    #logo-topo img:hover {
+      filter: brightness(1.2);
+      transform: scale(1.03);
+    }
+
+    .btn-home {
+      border: 2px solid var(--green);
+      padding: 10px 20px;
+      border-radius: 8px;
+      color: var(--green);
+      background: transparent;
+      text-decoration: none;
+      font-family: 'Orbitron', sans-serif;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+    .btn-home:hover {
+      background: var(--green-light);
+      color: #000;
+    }
+
+    h1 {
+      text-align: center;
+      color: var(--green);
+      margin: 40px 0 20px;
+      font-size: 2.5rem;
+    }
+
+    .pergunta {
+      background: var(--bg-medium);
+      border: 1px solid var(--green);
+      border-radius: 12px;
+      padding: 28px;
+      margin-bottom: 40px;
+      position: relative;
+      box-shadow: 0 4px 16px rgba(0,255,194,0.05);
+      transition: all 0.3s ease;
+    }
+    .pergunta:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(0,255,194,0.08);
+    }
+
+    .pergunta h3 {
+      color: var(--green-light);
+      font-size: 1.2rem;
+      margin-bottom: 20px;
+    }
+
+    .alternativa {
+      display: block;
+      padding: 14px 18px;
+      background: #252525;
+      border: 1px solid #00d18744;
+      border-radius: 10px;
+      margin: 10px 0;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .alternativa:hover {
+      background: #00d18722;
+      border-color: var(--green-light);
+    }
+    .alternativa input[type="radio"] {
+      margin-right: 12px;
+      transform: scale(1.2);
+    }
+
+    .timer {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      font-weight: bold;
+      color: var(--red);
+    }
+
+    .btn-finalizar {
+      display: block;
+      margin: 40px auto 20px;
+      padding: 14px 36px;
+      background: linear-gradient(135deg, var(--green), var(--green-light));
+      color: #000;
+      font-weight: bold;
+      border: none;
+      border-radius: 10px;
+      font-size: 1.1rem;
+      cursor: pointer;
+      box-shadow: 0 6px 16px rgba(0, 255, 194, 0.2);
+      transition: transform 0.3s ease;
+    }
+    .btn-finalizar:hover {
+      transform: scale(1.05);
+    }
+
+    .resultado {
+      text-align: center;
+      font-size: 1.5rem;
+      margin-top: 30px;
+    }
+
+    .barra-progresso {
+      width: 100%;
+      height: 10px;
+      background: #333;
+      border-radius: 10px;
+      overflow: hidden;
+      margin-top: 20px;
+      box-shadow: 0 0 8px #00ffc288;
+    }
+
+    .progresso {
+      height: 100%;
+      background: var(--green);
+      width: 0%;
+      transition: width 0.3s ease;
+    }
+
+  </style>
+</head>
+<body>
+  <header>
+    <a href="ZAcademy.html" id="logo-topo">
+      <img src="img/ZAcademy.png" alt="Logo ZAcademy" />
+    </a>
+    <a href="ZAcademy.html" class="btn-home">← Voltar</a>
+  </header>
+
+  <h1>Exercícios SQL Server</h1>
+  <div class="barra-progresso"><div id="progresso" class="progresso"></div></div>
+  <div id="exercicios"></div>
+  <button class="btn-finalizar" onclick="finalizar()">Próxima</button>
+  <div id="resultado" class="resultado"></div>
+
+  <script>
+    const perguntas = [
+      {
+        pergunta: "O que faz a cláusula WITH (NOLOCK) em uma query SQL Server?",
+        alternativas: [
+          "Garante consistência de dados durante a leitura",
+          "Evita o uso de índices",
+          "Permite leitura de dados sem bloqueios, mas com chance de dirty reads",
+          "Trava a tabela para leitura exclusiva"
+        ],
+        correta: "Permite leitura de dados sem bloqueios, mas com chance de dirty reads"
+      },
+      {
+        pergunta: "O que significa a cláusula OVER() em funções de janela?",
+        alternativas: [
+          "Executa a função apenas uma vez por grupo",
+          "Cria subconsultas temporárias",
+          "Define o conjunto de linhas para a função de agregação",
+          "Cria índices automaticamente"
+        ],
+        correta: "Define o conjunto de linhas para a função de agregação"
+      },
+      {
+        pergunta: "Qual a diferença entre INNER JOIN e LEFT JOIN?",
+        alternativas: [
+          "INNER JOIN retorna todos os dados da esquerda; LEFT JOIN retorna da direita",
+          "INNER JOIN retorna apenas registros que coincidem em ambas as tabelas; LEFT JOIN retorna todos da esquerda mesmo sem correspondência",
+          "LEFT JOIN filtra resultados nulos; INNER JOIN não",
+          "LEFT JOIN é mais rápido que INNER JOIN"
+        ],
+        correta: "INNER JOIN retorna apenas registros que coincidem em ambas as tabelas; LEFT JOIN retorna todos da esquerda mesmo sem correspondência"
+      },
+      {
+        pergunta: "Qual dessas opções cria um índice corretamente?",
+        alternativas: [
+          "CREATE INDEX idx_nome ON TABELA(nome);",
+          "INDEX idx_nome ON nome;",
+          "ADD INDEX TO TABELA(nome);",
+          "SET INDEX nome IN TABELA;"
+        ],
+        correta: "CREATE INDEX idx_nome ON TABELA(nome);"
+      },
+      {
+        pergunta: "O que é uma stored procedure no SQL Server?",
+        alternativas: [
+          "Um índice armazenado em disco",
+          "Um tipo de tabela temporária",
+          "Um script pré-compilado que pode ser executado com parâmetros",
+          "Um log de transações"
+        ],
+        correta: "Um script pré-compilado que pode ser executado com parâmetros"
+      },
+      {
+        pergunta: "Qual comando é usado para transações no SQL Server?",
+        alternativas: [
+          "BEGIN TRANSACTION / COMMIT / ROLLBACK",
+          "START SQL / FINISH / CANCEL",
+          "TRY / CATCH / END",
+          "BEGIN / END / UNDO"
+        ],
+        correta: "BEGIN TRANSACTION / COMMIT / ROLLBACK"
+      },
+      {
+        pergunta: "Qual função retorna a data e hora atual no SQL Server?",
+        alternativas: [
+          "GETDATE()",
+          "NOW()",
+          "CURRENT_DATE",
+          "DATE_NOW()"
+        ],
+        correta: "GETDATE()"
+      },
+      {
+        pergunta: "Como excluir todos os dados de uma tabela e resetar a identidade?",
+        alternativas: [
+          "DELETE FROM tabela",
+          "TRUNCATE TABLE tabela",
+          "DROP TABLE tabela",
+          "RESET TABLE tabela"
+        ],
+        correta: "TRUNCATE TABLE tabela"
+      },
+      {
+        pergunta: "Como verificar se uma coluna aceita valores nulos?",
+        alternativas: [
+          "Usando ISNULL(coluna)",
+          "Verificando o tipo de dado",
+          "Consultando INFORMATION_SCHEMA.COLUMNS",
+          "Testando com SELECT *"
+        ],
+        correta: "Consultando INFORMATION_SCHEMA.COLUMNS"
+      },
+      {
+        pergunta: "Qual comando cria uma tabela temporária local?",
+        alternativas: [
+          "CREATE TEMP TABLE nome",
+          "CREATE TABLE #nome",
+          "CREATE TABLE nome_temp GLOBAL",
+          "CREATE TABLE nome AS TEMP"
+        ],
+        correta: "CREATE TABLE #nome"
+      }
+    ];
+
+    const container = document.getElementById("exercicios");
+    const resultadoDiv = document.getElementById("resultado");
+    const progressoBar = document.getElementById("progresso");
+    const btnFinalizar = document.querySelector(".btn-finalizar");
+
+    let indexAtual = 0;
+    let respostas = [];
+    let tempo = 30;
+    let timerInterval;
+
+    function carregarPergunta() {
+      clearInterval(timerInterval);
+      tempo = 20;
+      container.innerHTML = "";
+
+      const q = perguntas[indexAtual];
+      const div = document.createElement("div");
+      div.className = "pergunta";
+
+      div.innerHTML = `
+        <h3>${indexAtual + 1}. ${q.pergunta}</h3>
+        <div class="timer" id="timer">⏱️ ${tempo}s</div>
+      `;
+
+      q.alternativas.forEach(alt => {
+        const label = document.createElement("label");
+        label.className = "alternativa";
+        label.innerHTML = `<input type="radio" name="resposta" value="${alt}">${alt}`;
+        div.appendChild(label);
+      });
+
+      container.appendChild(div);
+      atualizarProgresso();
+
+      timerInterval = setInterval(() => {
+        tempo--;
+        document.getElementById("timer").textContent = `⏱️ ${tempo}s`;
+      if (tempo <= 0) {
+  clearInterval(timerInterval);
+  const selected = document.querySelector('input[name="resposta"]:checked');
+  if (!selected) {
+    alert('Tempo esgotado! Você precisa marcar uma alternativa para continuar.');
+    tempo = 30;
+    document.getElementById("timer").textContent = `⏱️ ${tempo}s`;
+    return;
+  }
+  salvarResposta();
+  proximaPergunta();
+}
+
+      }, 1000);
+    }
+
+    function salvarResposta() {
+      const selected = document.querySelector('input[name="resposta"]:checked');
+      respostas.push(selected ? selected.value : null);
+    }
+
+    function proximaPergunta() {
+      clearInterval(timerInterval);
+      indexAtual++;
+      if (indexAtual < perguntas.length) {
+        carregarPergunta();
+      } else {
+        mostrarResultado();
+      }
+    }
+
+    function atualizarProgresso() {
+      const progresso = ((indexAtual) / perguntas.length) * 100;
+      progressoBar.style.width = `${progresso}%`;
+    }
+
+    function mostrarResultado() {
+      container.innerHTML = "";
+      btnFinalizar.style.display = "none";
+
+      let acertos = respostas.filter((resposta, i) => resposta === perguntas[i].correta).length;
+      resultadoDiv.innerHTML = `
+        <p>✅ Você acertou <strong>${acertos}</strong> de <strong>${perguntas.length}</strong>.</p>
+        <p>${acertos >= 7 ? "Parabéns, você foi aprovado!" : "Tente novamente para melhorar seu domínio em SQL."}</p>
+      `;
+    }
+
+   function finalizar() {
+  const selected = document.querySelector('input[name="resposta"]:checked');
+  if (!selected) {
+    alert('Por favor, selecione uma alternativa antes de continuar.');
+    return;
+  }
+  salvarResposta();
+  proximaPergunta();
+}
+
+
+    carregarPergunta();
+  </script>
+</body>
+</html>

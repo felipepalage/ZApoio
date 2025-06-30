@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login - Zapoio</title>
+  <link rel="icon" type="image/png" href="img/ZApoio.png"/>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(to right, #121212, #1f3f35);
+      color: #ffffff;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .login-container {
+      background: #f0fdf9;
+      color: #003d28;
+      padding: 40px;
+      border-radius: 16px;
+      box-shadow: 0 0 20px rgba(0, 255, 194, 0.2);
+      max-width: 400px;
+      width: 90%;
+    }
+
+    .login-container h2 {
+      font-family: 'Orbitron', sans-serif;
+      text-align: center;
+      color: #00d187;
+      margin-bottom: 30px;
+    }
+
+    .login-container label {
+      display: block;
+      margin-bottom: 6px;
+      font-weight: 600;
+    }
+
+    .login-container input[type="text"],
+    .login-container input[type="password"] {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 20px;
+      border: 1px solid #00d18755;
+      border-radius: 8px;
+      background: #ffffff;
+      color: #003d28;
+      font-size: 1rem;
+    }
+
+    .login-container button {
+      background: linear-gradient(135deg, #00d187, #00ffc2);
+      color: #003d28;
+      width: 100%;
+      padding: 12px;
+      font-weight: bold;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: 0.3s ease;
+    }
+
+    .login-container button:hover {
+      transform: scale(1.03);
+      box-shadow: 0 0 10px #00ffc280;
+    }
+
+    .login-container .logo {
+      display: block;
+      margin: 0 auto 20px;
+      max-width: 120px;
+    }
+
+    .login-container p {
+      text-align: center;
+      margin-top: 20px;
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="login-container">
+    <img src="img/ZApoio.png" alt="Zapoio Logo" class="logo" />
+    <h2>Acesso Zapoio</h2>
+    <form onsubmit="return login()">
+      <label for="usuario">Usuário</label>
+      <input type="text" id="usuario" placeholder="Digite seu login" required />
+
+      <label for="senha">Senha</label>
+      <input type="password" id="senha" placeholder="Digite sua senha" required />
+
+      <button type="submit">Entrar</button>
+    </form>
+    <p>© 2025 Zitec. Todos os direitos reservados.</p>
+  </div>
+
+  <script>
+    function login() {
+      const usuario = document.getElementById("usuario").value;
+      const senha = document.getElementById("senha").value;
+
+      if (usuario === "admin" && senha === "zitec123") {
+        window.location.href = "zApoio.html"; 
+      } else {
+        alert("Usuário ou senha inválidos");
+      }
+      return false;
+    }
+  </script>
+</body>
+</html>
