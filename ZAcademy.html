@@ -240,22 +240,6 @@ nav .home-icon:hover {
 }
 
 
-
-    @media (max-width: 768px) {
-      header {
-        flex-direction: column;
-        padding: 20px;
-      }
-
-      nav a {
-        margin: 10px;
-      }
-
-      .hero h1 {
-        font-size: 2rem;
-      }
-    }
-
     header {
   transition: box-shadow 0.3s ease, background 0.3s ease, border-bottom 0.3s ease;
 }
@@ -274,6 +258,23 @@ header:hover {
 #logo-topo img:active {
   transform: scale(0.94);
 }
+
+
+@media (max-width: 768px) {
+  nav {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+  }
+
+  .btn-home {
+    width: 90%;
+    text-align: center;
+    justify-content: center;
+  }
+}
+
   </style>
 </head>
 <body>
