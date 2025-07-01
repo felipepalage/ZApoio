@@ -1,27 +1,34 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Livros de C# - Zitec</title>
   <link rel="icon" type="image/png" href="img/ZApoio.png"/>
-
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Poppins:wght@400;600&display=swap" rel="stylesheet"/>
   <style>
-    body {
+    * {
       margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
       font-family: 'Poppins', sans-serif;
       background: #0e0e0e;
       color: #ffffff;
     }
 
     header {
-      background: #121212;
-      padding: 24px 40px;
       display: flex;
       align-items: center;
       justify-content: space-between;
+      background: #121212;
+      padding: 12px 40px;
       border-bottom: 2px solid #00d187;
-      box-shadow: 0 4px 8px rgba(0, 209, 135, 0.1);
+      box-shadow: 0 4px 12px rgba(0, 209, 135, 0.1);
+      height: 150px;
+      min-height: 80px;
     }
 
     .titulo {
@@ -32,6 +39,8 @@
 
     .titulo img {
       height: 50px;
+      max-height: 80px;
+      object-fit: contain;
     }
 
     .titulo span {
@@ -42,18 +51,21 @@
     }
 
     .btn-voltar {
+      background: transparent;
       color: #00d187;
+      font-family: 'Orbitron', sans-serif;
+      border: 2px solid #00d187;
+      padding: 10px 20px;
+      border-radius: 8px;
       text-decoration: none;
       font-weight: 600;
-      border: 1px solid #00d18755;
-      padding: 10px 16px;
-      border-radius: 8px;
-      transition: background 0.3s ease, transform 0.3s ease;
+      transition: all 0.3s ease;
     }
 
     .btn-voltar:hover {
-      background: #00d18733;
-      transform: scale(1.03);
+      background: #00d18722;
+      box-shadow: 0 0 8px #00d18788;
+      color: #00ffc2;
     }
 
     .container-livros {
@@ -77,9 +89,9 @@
       box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
       text-align: center;
       flex-shrink: 0;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
       scroll-snap-align: start;
       border: 1px solid #00d18722;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
 
     .livro:hover {
@@ -149,6 +161,19 @@
       .livro h3 {
         font-size: 1rem;
       }
+
+      header {
+        flex-direction: column;
+        gap: 10px;
+        height: auto;
+        padding: 20px;
+        text-align: center;
+      }
+
+      .btn-voltar {
+        width: 100%;
+        max-width: 200px;
+      }
     }
   </style>
 </head>
@@ -159,7 +184,7 @@
     <img src="img/pilha-de-livros.png" alt="Livros Zitec" />
     <span>C# e .NET</span>
   </div>
-  <a href="zacademy.html" class="btn-voltar">← Voltar</a>
+  <a href="ZAcademy.html" class="btn-voltar">← Voltar</a>
 </header>
 
 <div class="container-livros">
