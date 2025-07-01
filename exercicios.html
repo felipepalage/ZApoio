@@ -165,6 +165,11 @@
     footer a:hover {
       text-decoration: underline;
     }
+    @keyframes pulse {
+  0% { opacity: 0.3; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.05); }
+  100% { opacity: 0.3; transform: scale(1); }
+}
   </style>
 </head>
 <body>
@@ -179,6 +184,26 @@
     <h1>Exercícios Técnicos</h1>
     <p>Pratique com exercícios reais que te preparam para os desafios do dia a dia na Zitec.</p>
   </section>
+<div id="intro" style="
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: #000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 99999;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+">
+  <img src="img/ZAcademy.png" alt="Intro Logo" style="
+    width: 160px;
+    animation: pulse 2s infinite ease-in-out;
+  ">
+</div>
 
   <section class="section">
     <h2>Teste C#</h2>
@@ -232,10 +257,22 @@
   </footer>
 
   <script>
-    document.getElementById("logo-topo").addEventListener("click", (e) => {
-      e.preventDefault();
-      location.reload();
-    });
+  document.addEventListener("DOMContentLoaded", () => {
+    const logo = document.getElementById("logo-topo");
+    const intro = document.getElementById("intro");
+
+    if (logo && intro) {
+      logo.addEventListener("click", (e) => {
+        e.preventDefault();
+        intro.style.opacity = "1";
+        intro.style.pointerEvents = "auto";
+        setTimeout(() => {
+          window.location.href = "exercicios.html"; 
+        }, 2000);
+      });
+    }
+  });
+</script>
   </script>
 </body>
 </html>

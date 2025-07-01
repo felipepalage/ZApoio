@@ -298,6 +298,11 @@ header:hover {
     max-height: 100px;
   }
 }
+@keyframes pulse {
+  0% { opacity: 0.3; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.05); }
+  100% { opacity: 0.3; transform: scale(1); }
+}
 </style>
 </head>
 <body>
@@ -313,7 +318,26 @@ header:hover {
         </nav>
       </header>
       
-      
+      <div id="intro" style="
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: #000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 99999;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+">
+  <img src="img/ZAcademy.png" alt="Logo ZAcademy" style="
+    width: 160px;
+    animation: pulse 2s infinite ease-in-out;
+  ">
+</div>
 
   <section class="hero">
     <h1>Bem vindo a ZAcademy</h1>
@@ -415,16 +439,22 @@ header:hover {
   
   
   <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      const logo = document.getElementById("logo-topo");
-      if (logo) {
-        logo.addEventListener("click", (e) => {
-          e.preventDefault();
-          location.reload();
-        });
-      }
-    });
-  </script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const logo = document.getElementById("logo-topo");
+    const intro = document.getElementById("intro");
+
+    if (logo && intro) {
+      logo.addEventListener("click", (e) => {
+        e.preventDefault();
+        intro.style.opacity = "1";
+        intro.style.pointerEvents = "auto";
+        setTimeout(() => {
+          window.location.href = "ZAcademy.html"; 
+        }, 2000);
+      });
+    }
+  });
+</script>
   
   <footer>
     <p>&copy; 2025 Zitec. Todos os direitos reservados.</p>

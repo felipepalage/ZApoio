@@ -155,13 +155,40 @@
     footer a:hover {
       text-decoration: underline;
     }
+
+    @keyframes pulse {
+  0% { opacity: 0.3; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.05); }
+  100% { opacity: 0.3; transform: scale(1); }
+}
   </style>
 </head>
 <body>
   <header>
-    <div></div>
-    <a href="zApoio.html" class="btn-voltar">← Voltar</a>
-  </header>
+  <a href="#" id="logo-topo">
+    <img src="img/ZAcademy.png" alt="Logo Zapoio" style="max-height: 200px; height: auto; object-fit: contain; display: block; transition: transform 0.2s ease, filter 0.3s ease;" />
+  </a>
+
+  <a href="ZAcademy.html" class="btn-voltar">← Voltar</a>
+</header>
+<div id="intro" style="
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: #000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 99999;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;">
+  <img src="img/ZApoio.png" alt="Intro Logo" style="
+    width: 160px;
+    animation: pulse 2s infinite ease-in-out;">
+</div>
   <section class="hero">
     <h1>Materiais de Apoio</h1>
     <p>Ferramentas, documentações e referências rápidas para o time de devs da Zitec.</p>
@@ -179,6 +206,8 @@
         <p>Explore os endpoints disponíveis do ZCustódia.</p>
         <a href="https://custodiabackend-prod.idsf.com.br/swagger/index.html" target="_blank">Abrir Swagger</a>
       </div>
+
+      
 
       <div class="card">
         <h3>Swagger Dev</h3>
@@ -223,5 +252,23 @@
     <p>&copy; 2025 Zitec. Todos os direitos reservados.</p>
     <p><a href="#">Termos de uso</a> | <a href="#">Contato</a></p>
   </footer>
+
+  <script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const logo = document.getElementById("logo-topo");
+    const intro = document.getElementById("intro");
+
+    if (logo && intro) {
+      logo.addEventListener("click", (e) => {
+        e.preventDefault();
+        intro.style.opacity = "1";
+        intro.style.pointerEvents = "auto";
+        setTimeout(() => {
+          window.location.href = "materiais.html"; 
+        }, 2000);
+      });
+    }
+  });
+</script>
 </body>
 </html>

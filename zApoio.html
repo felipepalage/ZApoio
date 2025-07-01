@@ -527,6 +527,12 @@ footer a:hover {
   transform: scale(1.1);
 }
 
+@keyframes pulse {
+  0% { opacity: 0.3; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.05); }
+  100% { opacity: 0.3; transform: scale(1); }
+}
+
     
   </style>
 </head>
@@ -608,6 +614,27 @@ footer a:hover {
     
     </div>
   </section>
+
+  <div id="intro" style="
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: #000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 99999;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+">
+  <img src="img/ZApoio.png" alt="Logo Zapoio" style="
+    width: 160px;
+    animation: pulse 2s infinite ease-in-out;
+  ">
+</div>
 
   <section class="section" id="fidc">
     <h2>Regra de negócio</h2>
@@ -739,17 +766,17 @@ footer a:hover {
 
  <script>
   window.addEventListener("DOMContentLoaded", () => {
-    const abrirBtn = document.getElementById("abrir-chatbot");
-    const modal = document.getElementById("chatbot-modal");
+    const logoTopo = document.getElementById("logo-topo");
+  const intro = document.getElementById("intro");
 
-    abrirBtn.addEventListener("click", () => {
-      modal.classList.toggle("open");
-    });
-
-    document.getElementById("fechar-chatbot").addEventListener("click", () => {
-      modal.classList.remove("open");
-    });
-
+  logoTopo.addEventListener("click", (e) => {
+    e.preventDefault();
+    intro.style.opacity = "1";
+    intro.style.pointerEvents = "auto";
+    setTimeout(() => {
+      window.location.href = "zApoio.html"; 
+    }, 2000);
+  });
     window.responder = function(pergunta) {
       const baseConhecimento = {
         "o que é sacado": "Sacado é o devedor do título. É a pessoa ou empresa que deve pagar o valor do crédito ao fundo.",
@@ -818,11 +845,11 @@ footer a:hover {
       <button onclick="responder('o que é inadimplência')">⚠️ O que é Inadimplência?</button>
       <button onclick="responder('qual o papel da zitec')">💻 Qual o papel da Zitec?</button>
       <button onclick="responder('como é o fluxo da custódia')">📈 Como é o fluxo da custódia?</button>
-<button onclick="responder('o que são cotas subordinadas')">🧱 O que são cotas subordinadas?</button>
-<button onclick="responder('o que é patrimônio líquido do fundo')">📉 O que é Patrimônio Líquido?</button>
-<button onclick="responder('quem fiscaliza um fidc')">🛡️ Quem fiscaliza um FIDC?</button>
-<button onclick="responder('o que é prazo médio da carteira')">⏳ O que é Prazo Médio?</button>
-<button onclick="responder('o que é risco de concentração')">🎯 O que é Risco de Concentração?</button>
+      <button onclick="responder('o que são cotas subordinadas')">🧱 O que são cotas subordinadas?</button>
+      <button onclick="responder('o que é patrimônio líquido do fundo')">📉 O que é Patrimônio Líquido?</button>
+      <button onclick="responder('quem fiscaliza um fidc')">🛡️ Quem fiscaliza um FIDC?</button>
+      <button onclick="responder('o que é prazo médio da carteira')">⏳ O que é Prazo Médio?</button>
+      <button onclick="responder('o que é risco de concentração')">🎯 O que é Risco de Concentração?</button>
     </div>
   </div>
 </div>
